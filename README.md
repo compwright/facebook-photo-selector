@@ -2,7 +2,7 @@
 
 An easy-to-use Facebook Photo Selector jQuery plugin built for Twitter Bootstrap.
 
-[View Demo]() or [Download the Plugin]()
+[View Demo](http://compwright.github.io/demos/facebook-photo-selector/) or [Download the Plugin](https://raw.github.com/compwright/facebook-photo-selector/master/facebookphotoselector.jquery.js)
 
 ## License
 
