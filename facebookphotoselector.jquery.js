@@ -50,7 +50,7 @@ var FacebookPhotoSelector =
 
 	renderLoadingIndicator : function()
 	{
-		return '<div class="loading"><img src="img/loading.gif" alt="Loading, please wait..."></div>';
+		return '<div class="loading"><img src="assets/img/loading.gif" alt="Loading, please wait..."></div>';
 	},
 	
 	// Render a Facebook photo album as HTML
