@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Facebook Photo Selector Demo</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	<style type="text/css">
+		.thumbnail.selected {
+			background-color: #428bca;
+		}
+		.loading {
+			text-align: center;
+		}
+		.modal-body {
+			max-height: 600px;
+			overflow-y: auto;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+
+		<!-- Static navbar -->
+		<div class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Facebook Photo Selector</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="https://gitlab.brandmovers.net/prototype/instagram_photo_selector">Source Code</a></li>
+			</ul>
+		</div><!--/.nav-collapse -->
+		</div>
+
+		<!-- Main component for a primary marketing message or call to action -->
+		<div class="jumbotron">
+			<h1>Facebook Photo Selector</h1>
+			<p>To get started, click the button below.</p>
+			<p>
+				<a class="btn btn-lg btn-primary" data-toggle="modal" href="#facebook_photo_selector">Select Facebook Photo</a>
+			</p>
+		</div>
+
+	</div> <!-- /container -->
+
+	<!-- Facebook photo selector modal -->
+	<div id="facebook_photo_selector" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Choose a photo</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form">
+						<label>Select Facebook Album:</label>
+						<select class="fbps-albums" name="facebook_photo_album"></select>
+					</div>
+					<hr>
+					<div class="fbps-photos clearfix"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default fbps-cancel" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary fbps-select" data-dismiss="modal">Select Photo</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../facebook-photo-selector.js"></script>
+	
+	<!-- Facebook SDK -->
+	<div id="fb-root"></div>
+	<script>
+		$(function()
+		{
+			$.getScript('//connect.facebook.net/en_US/all.js', function()
+			{
+				FB.init({
+					appId      : '165196420345884',
+					channelUrl : '//localhost.dev/facebook-photo-selector/demo/fb-channel.html',
+					status     : true,
+					xfbml      : false
+				});
+
+				FacebookPhotoSelector.setFacebookSDK(FB);
+			});
+
+			$('#facebook_photo_selector').facebookPhotoSelector({
+				onFinalSelect : function(photos)
+				{
+					console.log(photos);
+				}
+			});
+		});
+	</script>
+
+</body>
+</html>
